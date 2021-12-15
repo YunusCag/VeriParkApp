@@ -1,6 +1,7 @@
 package com.yunuscagliyan.veriparkapp.data.remote.model.response.start
 
 import com.google.gson.annotations.SerializedName
+import com.yunuscagliyan.veriparkapp.data.remote.model.response.status.StatusModel
 
 data class HandShakeModel(
     @SerializedName("aesKey")
@@ -11,4 +12,6 @@ data class HandShakeModel(
     val authorization: String?,
     @SerializedName("lifeTime")
     val lifeTime: String?,
+    @SerializedName("status")
+    val status:StatusModel?,
 )

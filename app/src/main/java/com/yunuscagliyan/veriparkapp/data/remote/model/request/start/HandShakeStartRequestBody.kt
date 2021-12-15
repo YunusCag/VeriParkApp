@@ -6,9 +6,11 @@ data class HandShakeStartRequestBody(
     @SerializedName("deviceId")
     val deviceId:String?,
     @SerializedName("systemVersion")
-    val systemVersion:String,
+    val systemVersion:String?,
     @SerializedName("platformName")
-    val platformName:String,
+    val platformName:String?,
+    @SerializedName("deviceModel")
+    val deviceModel:String?,
     @SerializedName("manifacturer")
-    val manifacturer:String,
+    val manifacturer:String?,
 )
