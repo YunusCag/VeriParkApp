@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/login_destination">
 
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/login_destination"
         android:name="com.yunuscagliyan.veriparkapp.presentation.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <action
+        android:id="@+id/action_global_login_destination"
+        app:destination="@id/login_destination"
+        app:popUpTo="@id/login_destination"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true"/>
 </navigation>
