@@ -31,19 +31,13 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initObservers()
+    }
 
-        val deviceId:String= UUID.randomUUID().toString();
-        val versionCode="${Build.VERSION.SDK_INT}"
-        val deviceModel= Build.MODEL
-        val manifacturer=Build.MANUFACTURER
+    private fun initObservers() {
+        viewModel.handShake.observe(viewLifecycleOwner){resources->
 
-
-        viewModel.startHandleShake(
-            deviceId = deviceId,
-            systemVersion=versionCode,
-            deviceModel=deviceModel,
-            manifacturer=manifacturer,
-        )
+        }
     }
 
 }

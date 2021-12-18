@@ -1,5 +1,6 @@
 package com.yunuscagliyan.veriparkapp.presentation.login.view_model
 
+import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,6 +21,20 @@ class LoginViewModel @Inject constructor(
     private val startHandleShake: StartHandShakeUseCase,
 ) : ViewModel() {
 
+
+    init {
+        val deviceId:String= UUID.randomUUID().toString();
+        val versionCode="${Build.VERSION.SDK_INT}"
+        val deviceModel= Build.MODEL
+        val manifacturer= Build.MANUFACTURER
+
+        startHandleShake(
+            deviceId = deviceId,
+            systemVersion=versionCode,
+            deviceModel=deviceModel,
+            manifacturer=manifacturer,
+        )
+    }
 
     private val _handleShake=MutableLiveData<Resource<HandShakeModel?>>()
     val handShake:LiveData<Resource<HandShakeModel?>> =_handleShake
