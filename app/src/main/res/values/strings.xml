@@ -2,4 +2,7 @@
     <string name="app_name">VeriParkApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_button_text">IMKB Hisse Senetleri/Endeksler</string>
+    <string name="login_app_bar_title">IMKB Hisse ve Endeksler</string>
+    <string name="home_app_bar_title">IMKB Hisse Senetleri ve Endeksler</string>
 </resources>

@@ -11,7 +11,7 @@ class AuthInterceptor(
 ):Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val req=chain.request().newBuilder()
-        req.addHeader("X-VP-Authorization:",preferenceManager.authorization?:"")
+        req.addHeader("X-VP-Authorization",preferenceManager.authorization?:"")
         val response=chain.proceed(req.build())
 
         if(response.code==401){

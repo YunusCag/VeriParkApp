@@ -7,24 +7,21 @@
     tools:context=".presentation.MainActivity"
     android:id="@+id/navigation_layout">
 
-    <LinearLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBar"
-            android:background="@color/red_500"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"/>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_navigation" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/main_navigation" />
-    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_drawer"
+        android:layout_width="256dp"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_menu"
+        android:visibility="visible"
+        android:layout_height="match_parent"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

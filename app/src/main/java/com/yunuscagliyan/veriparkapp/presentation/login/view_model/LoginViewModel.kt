@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yunuscagliyan.veriparkapp.common.Resource
 import com.yunuscagliyan.veriparkapp.data.remote.model.response.start.HandShakeModel
+import com.yunuscagliyan.veriparkapp.domain.preference.PreferenceManager
 import com.yunuscagliyan.veriparkapp.domain.use_case.StartHandShakeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -19,27 +20,13 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val startHandleShake: StartHandShakeUseCase,
+    private val preferenceManager: PreferenceManager
 ) : ViewModel() {
-
-
-    init {
-        val deviceId:String= UUID.randomUUID().toString();
-        val versionCode="${Build.VERSION.SDK_INT}"
-        val deviceModel= Build.MODEL
-        val manifacturer= Build.MANUFACTURER
-
-        startHandleShake(
-            deviceId = deviceId,
-            systemVersion=versionCode,
-            deviceModel=deviceModel,
-            manifacturer=manifacturer,
-        )
-    }
 
     private val _handleShake=MutableLiveData<Resource<HandShakeModel?>>()
     val handShake:LiveData<Resource<HandShakeModel?>> =_handleShake
 
-    fun startHandleShake(
+    private fun startHandleShake(
         deviceId: String?,
         systemVersion: String?,
         deviceModel:String?,
@@ -53,5 +40,23 @@ class LoginViewModel @Inject constructor(
         ).onEach {
             _handleShake.postValue(it)
         }.launchIn(viewModelScope)
+    }
+
+    fun onLoginClick(){
+        val deviceId:String= UUID.randomUUID().toString();
+        val versionCode="${Build.VERSION.SDK_INT}"
+        val deviceModel= Build.MODEL
+        val manifacturer= Build.MANUFACTURER
+
+        startHandleShake(
+            deviceId = deviceId,
+            systemVersion=versionCode,
+            deviceModel=deviceModel,
+            manifacturer=manifacturer,
+        )
+    }
+
+    fun saveAuthToken(token:String){
+        preferenceManager.authorization=token
     }
 }

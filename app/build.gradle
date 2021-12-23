@@ -100,6 +100,12 @@ dependencies {
     //Eventbus
     implementation("org.greenrobot:eventbus:3.3.1")
 
+    //AES
+    implementation 'com.scottyab:aescrypt:0.0.1'
+
+    implementation 'com.scottyab:aescrypt:0.0.1'
+
+
 
 
 }

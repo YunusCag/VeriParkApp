@@ -6,5 +6,6 @@ object VeriParkUrl {
 
     //paths
     const val HAND_SHAKE_START_PATH="handshake/start"
+    const val GET_STOCK_LIST="stocks/list"
 
 }
