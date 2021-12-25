@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.yunuscagliyan.veriparkapp.common.Resource
+import com.yunuscagliyan.veriparkapp.common.extension.onQueryTextChanged
 import com.yunuscagliyan.veriparkapp.common.extension.toEncrypted
+import com.yunuscagliyan.veriparkapp.data.remote.model.response.stock.StockModel
 import com.yunuscagliyan.veriparkapp.databinding.FragmentHomeBinding
 import com.yunuscagliyan.veriparkapp.presentation.MainActivity
 import com.yunuscagliyan.veriparkapp.presentation.MainViewModel
@@ -24,6 +26,8 @@ class HomeFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
 
     private lateinit var stockAdapter: TableStockAdapter
+
+    private var stockList=ArrayList<StockModel?>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,15 +45,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun initUI() {
-        stockAdapter = TableStockAdapter {
-            mainViewModel.getDecryptedText(it)
-        }
-
+        stockAdapter = TableStockAdapter()
 
         binding?.apply {
             (activity as? MainActivity)?.setUpToolbar(toolBar)
             rvStock.setHasFixedSize(true)
             rvStock.adapter = stockAdapter
+
+            etSearch.setText(viewModel.searchQuery.value)
+
+            etSearch.onQueryTextChanged{search->
+                viewModel.searchQuery.value=search
+            }
         }
     }
 
@@ -57,6 +64,11 @@ class HomeFragment : Fragment() {
         mainViewModel.period.observe(viewLifecycleOwner) {
             val periodEncrypted = mainViewModel.getEncryptedText(it.period)
             viewModel.getStock(periodEncrypted)
+            binding?.etSearch?.setText("")
+        }
+
+        viewModel.searchQuery.observe(viewLifecycleOwner){search->
+            filterStockBySymbol(search)
         }
 
         viewModel.stocks.observe(viewLifecycleOwner) { resource ->
@@ -70,10 +82,23 @@ class HomeFragment : Fragment() {
                 is Resource.Success -> {
                     val stocks = resource.data
                     stocks?.let {
-                        stockAdapter.submitList(it)
+                        this.stockList.clear()
+                        this.stockList.addAll(it)
+                        this.stockList.forEachIndexed{index,stock->
+                            this.stockList[index]?.symbol=mainViewModel.getDecryptedText(stock?.symbol?:"")
+                        }
+                        filterStockBySymbol("")
                     }
                 }
             }
         }
+    }
+
+    private fun filterStockBySymbol(search: String) {
+        val newList = stockList.filter { stock ->
+            val symbol = stock?.symbol ?: ""
+            symbol.contains(search, true)
+        }
+        stockAdapter.submitList(newList)
     }
 }

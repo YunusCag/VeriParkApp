@@ -1,9 +1,6 @@
 package com.yunuscagliyan.veriparkapp.presentation.home.view_model
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.yunuscagliyan.veriparkapp.common.Resource
 import com.yunuscagliyan.veriparkapp.data.remote.model.response.stock.StockModel
 import com.yunuscagliyan.veriparkapp.domain.use_case.GetStockListUseCase
@@ -17,14 +14,21 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val useCase: GetStockListUseCase
+    private val useCase: GetStockListUseCase,
+    private val state: SavedStateHandle
+
 ) : ViewModel() {
+
+
+    val searchQuery= state.getLiveData("searchQuery","")
+
 
     private val _stocks: MutableLiveData<Resource<List<StockModel?>>> = MutableLiveData()
     val stocks: LiveData<Resource<List<StockModel?>>> = _stocks
 
 
     fun getStock(periodEncrypted:String?)=viewModelScope.launch(Dispatchers.IO){
+        searchQuery.postValue("")
         useCase(periodEncrypted).onEach {
             _stocks.postValue(it)
         }.launchIn(viewModelScope)

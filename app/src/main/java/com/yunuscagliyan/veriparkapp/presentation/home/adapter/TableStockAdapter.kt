@@ -8,7 +8,6 @@ import com.yunuscagliyan.veriparkapp.databinding.TableStockRowBinding
 import com.yunuscagliyan.veriparkapp.presentation.home.view_holder.TableStockViewHolder
 
 class TableStockAdapter(
-    private val getDecrypted:(text:String)->String,
 ):RecyclerView.Adapter<TableStockViewHolder>() {
 
     private val stocks:ArrayList<StockModel?> = ArrayList<StockModel?>()
@@ -21,7 +20,7 @@ class TableStockAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TableStockViewHolder {
         val binding=TableStockRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return TableStockViewHolder(binding, getDecrypted)
+        return TableStockViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TableStockViewHolder, position: Int) {

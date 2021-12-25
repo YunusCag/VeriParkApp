@@ -20,6 +20,6 @@ data class StockModel(
     @SerializedName("volume")
     val volume: Double?,
     @SerializedName("symbol")
-    val symbol: String?,
+    var symbol: String?,
 
     )

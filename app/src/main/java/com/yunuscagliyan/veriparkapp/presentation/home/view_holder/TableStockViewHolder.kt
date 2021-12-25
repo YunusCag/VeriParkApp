@@ -4,14 +4,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.yunuscagliyan.veriparkapp.R
-import com.yunuscagliyan.veriparkapp.common.extension.toDecrypted
 import com.yunuscagliyan.veriparkapp.data.remote.model.response.stock.StockModel
 import com.yunuscagliyan.veriparkapp.databinding.TableStockRowBinding
 import java.text.DecimalFormat
 
 class TableStockViewHolder(
     private val binding: TableStockRowBinding,
-    private val getDecrypted:(text:String)->String,
     ) : RecyclerView.ViewHolder(binding.root) {
 
 
@@ -33,7 +31,7 @@ class TableStockViewHolder(
             containerRow.setBackgroundColor(
                 rowColor
             )
-            tvSymbol.text = getDecrypted(stock.symbol?:"")
+            tvSymbol.text = stock.symbol?:""
             tvPrice.text = decimalFormat.format(stock.price ?: 0)
             tvDifference.text = decimalFormat.format(stock.difference ?: 0)
             tvVolume.text = decimalFormat.format(stock.volume ?: 0)
