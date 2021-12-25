@@ -28,5 +28,6 @@
     <string name="detail_page_maximum">Taban:  %1$s</string>
     <string name="detail_page_offer">Satış: %1$s</string>
     <string name="detail_page_change">Değişim: </string>
+    <string name="login_page_logo_text">VERİPARK</string>
 
 </resources>

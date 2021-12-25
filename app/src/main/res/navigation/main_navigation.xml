@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_login_destination_to_home_destination"
             app:destination="@id/home_destination"
-            app:popUpTo="@id/home_destination"
+            app:popUpTo="@id/login_destination"
             app:launchSingleTop="true"
             app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"

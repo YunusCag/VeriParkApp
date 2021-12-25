@@ -51,9 +51,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun initUI() {
-        binding?.btnLogin?.setOnClickListener {
-            viewModel.onLoginClick()
-            navController = Navigation.findNavController(it)
+        binding?.apply {
+            layoutLoading.container.visibility=View.GONE
+
+            btnLogin.setOnClickListener {
+                viewModel.onLoginClick()
+                navController = Navigation.findNavController(it)
+            }
         }
     }
 
@@ -61,7 +65,10 @@ class LoginFragment : Fragment() {
         viewModel.handShake.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Loading -> {
-
+                    binding?.apply {
+                        layoutLogin.visibility=View.GONE
+                        layoutLoading.container.visibility=View.VISIBLE
+                    }
                 }
                 is Resource.Success -> {
                     resource.data?.let { handShake ->
@@ -74,9 +81,12 @@ class LoginFragment : Fragment() {
                     }
                 }
                 is Resource.Error -> {
+                    binding?.apply {
+                        btnLogin.visibility=View.VISIBLE
+                        layoutLoading.container.visibility=View.GONE
+                    }
                     Timber.e(resource.message)
                 }
-                else -> {}
             }
         }
     }

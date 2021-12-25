@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -23,7 +24,7 @@ import org.greenrobot.eventbus.ThreadMode
 class MainActivity : AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
-    private var navController: NavController? = null
+    private lateinit var navController: NavController
     private val viewModel:MainViewModel by viewModels()
 
 
@@ -66,6 +67,13 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        this.navController.addOnDestinationChangedListener{controller, destination, arguments ->
+            if(destination.id==R.id.home_destination){
+                binding?.navigationLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            }else{
+                binding?.navigationLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            }
+        }
     }
 
     override fun onStart() {
@@ -85,13 +93,20 @@ class MainActivity : AppCompatActivity() {
             )
         ).setOpenableLayout(binding?.navigationLayout).build()
         setSupportActionBar(toolbar)
-        navController?.let {
+        navController.let {
             NavigationUI.setupWithNavController(toolbar, it, appBarConfiguration)
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun navigateLogin(event: NavigateLoginEvent) {
-        navController?.navigate(R.id.action_global_login_destination)
+        navController.navigate(R.id.action_global_login_destination)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(
+            navController,
+            binding?.navigationLayout
+        ) || super.onSupportNavigateUp()
     }
 }
