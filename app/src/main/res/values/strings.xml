@@ -3,6 +3,21 @@
     <string name="login_button_text">IMKB Hisse Senetleri/Endeksler</string>
     <string name="login_app_bar_title">IMKB Hisse ve Endeksler</string>
     <string name="home_app_bar_title">IMKB Hisse Senetleri ve Endeksler</string>
+    <string name="login_page_logo_text">VERİPARK</string>
+
+
+    <!--Drawer -->
+
+    <string name="drawer_header_sub_title">IMKB Hisse Senetleri/Endeksler</string>
+    <string name="drawer_header_title">VERİPARK</string>
+
+    <string name="drawer_menu_all">Hisse ve Endeksler</string>
+    <string name="drawer_menu_increasing">Yükselenler</string>
+    <string name="drawer_menu_decreasing">Düşenler</string>
+    <string name="drawer_menu_volume_30">Hacme Göre-30</string>
+    <string name="drawer_menu_volume_50">Hacme Göre-50</string>
+    <string name="drawer_menu_volume_100">Hacme Göre-100</string>
+
     <string name="search_view_hint">Ara</string>
 
     <!--Stock Table -->
@@ -28,6 +43,7 @@
     <string name="detail_page_maximum">Taban:  %1$s</string>
     <string name="detail_page_offer">Satış: %1$s</string>
     <string name="detail_page_change">Değişim: </string>
-    <string name="login_page_logo_text">VERİPARK</string>
+
+
 
 </resources>

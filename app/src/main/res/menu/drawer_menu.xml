@@ -3,20 +3,32 @@
 
     <item
         android:id="@+id/menu_period_all"
-        android:title="Hisse ve Endeksler" />
+        android:title="@string/drawer_menu_all"
+        android:checkable="true"
+        />
     <item
         android:id="@+id/menu_period_increasing"
-        android:title="Yükselenler" />
+        android:title="@string/drawer_menu_increasing"
+        android:checkable="true"
+        />
     <item
         android:id="@+id/menu_period_decreasing"
-        android:title="Düşenler" />
+        android:title="@string/drawer_menu_decreasing"
+        android:checkable="true"
+        />
     <item
         android:id="@+id/menu_period_volume_30"
-        android:title="Hacme Göre-30" />
+        android:title="@string/drawer_menu_volume_30"
+        android:checkable="true"
+        />
     <item
         android:id="@+id/menu_period_volume_50"
-        android:title="Hacme Göre-50" />
+        android:title="@string/drawer_menu_volume_50"
+        android:checkable="true"
+        />
     <item
         android:id="@+id/menu_period_volume_100"
-        android:title="Hacme Göre-100" />
+        android:title="@string/drawer_menu_volume_100"
+        android:checkable="true"
+        />
 </menu>

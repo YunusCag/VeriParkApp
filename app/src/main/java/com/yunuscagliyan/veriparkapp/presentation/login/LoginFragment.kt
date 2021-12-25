@@ -53,7 +53,6 @@ class LoginFragment : Fragment() {
     private fun initUI() {
         binding?.apply {
             layoutLoading.container.visibility=View.GONE
-
             btnLogin.setOnClickListener {
                 viewModel.onLoginClick()
                 navController = Navigation.findNavController(it)

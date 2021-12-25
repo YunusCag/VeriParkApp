@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         this.navController = navHostFragment.navController
 
+        binding?.navigationDrawer?.setCheckedItem(R.id.menu_period_all)
+
         binding?.navigationDrawer?.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.menu_period_all->{
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
             }
+            binding?.navigationLayout?.close()
             true
         }
 
