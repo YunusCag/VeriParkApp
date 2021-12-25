@@ -10,8 +10,10 @@ data class StockDetailModel(
     val isUp: Boolean?,
     @SerializedName("bid")
     val bid: Double?,
-    @SerializedName("change")
+    @SerializedName("channge")
     val change: Double?,
+    @SerializedName("count")
+    val count:Int?,
     @SerializedName("difference")
     val difference: Double?,
     @SerializedName("offer")

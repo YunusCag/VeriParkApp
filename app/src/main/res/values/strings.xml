@@ -15,4 +15,19 @@
     <string name="stock_table_column_offer">Satış</string>
     <string name="stock_table_column_changing">Değişim</string>
 
+    <!--Detail Page -->
+
+    <string name="detail_page_symbol">Sembol: %1$s</string>
+    <string name="detail_page_daily_lowest">Günlük Düşük: %1$s</string>
+    <string name="detail_page_price">Fiyat: %1$s</string>
+    <string name="detail_page_daily_highest">Günlük Yüksek: %1$s</string>
+    <string name="detail_page_difference">\%% Fark: %1$s</string>
+    <string name="detail_page_count">Adet:  %1$d</string>
+    <string name="detail_page_volume">Hacim:  %1$s</string>
+    <string name="detail_page_minimum">Tavan: %1$s</string>
+    <string name="detail_page_bid">Alış: %1$s</string>
+    <string name="detail_page_maximum">Taban:  %1$s</string>
+    <string name="detail_page_offer">Satış: %1$s</string>
+    <string name="detail_page_change">Değişim: </string>
+
 </resources>
