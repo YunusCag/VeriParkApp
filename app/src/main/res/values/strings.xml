@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">VeriParkApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_button_text">IMKB Hisse Senetleri/Endeksler</string>
     <string name="login_app_bar_title">IMKB Hisse ve Endeksler</string>
     <string name="home_app_bar_title">IMKB Hisse Senetleri ve Endeksler</string>
     <string name="search_view_hint">Ara</string>
+
+    <!--Stock Table -->
+    <string name="stock_table_column_symbol">Sembol</string>
+    <string name="stock_table_column_price">Fiyat</string>
+    <string name="stock_table_column_difference">Fark</string>
+    <string name="stock_table_column_volume">Hacim</string>
+    <string name="stock_table_column_bid">Alış</string>
+    <string name="stock_table_column_offer">Satış</string>
+    <string name="stock_table_column_changing">Değişim</string>
+
 </resources>

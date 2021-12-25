@@ -25,14 +25,11 @@ fun String.toEncrypted(
 
         chip.init(Cipher.ENCRYPT_MODE, key, spec)
 
-        val chipResult=chip.doFinal(this.toByteArray())
+        val chipResult = chip.doFinal(this.toByteArray())
 
-        val tokenEncrypted=Base64.encode(chipResult,Base64.DEFAULT)
-        val encrypted=tokenEncrypted.toString(Charsets.UTF_8)
+        val tokenEncrypted = Base64.encode(chipResult, Base64.DEFAULT)
 
-
-        Timber.d("Encryted:${encrypted}")
-        return encrypted
+        return tokenEncrypted.toString(Charsets.UTF_8)
 
     } catch (e: Exception) {
         Timber.e("Encrypted:${e}")
@@ -57,9 +54,6 @@ fun String.toDecrypted(
         chip.init(Cipher.DECRYPT_MODE, key, spec)
 
         val chipResult=chip.doFinal(current)
-        Timber.d("Chip Result:${String(chipResult)}")
-
-
         return String(chipResult)
 
     } catch (e: Exception) {

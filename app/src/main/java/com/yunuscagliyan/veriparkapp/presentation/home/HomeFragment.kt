@@ -74,10 +74,20 @@ class HomeFragment : Fragment() {
         viewModel.stocks.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Error -> {
+                    binding?.apply {
+                        layoutSuccess.visibility=View.GONE
+                        layoutLoading.container.visibility=View.GONE
+                        layoutError.container.visibility=View.VISIBLE
+                        layoutError.tvError.text=resource.message?:""
 
+                    }
                 }
                 is Resource.Loading -> {
-
+                    binding?.apply {
+                        layoutSuccess.visibility=View.GONE
+                        layoutLoading.container.visibility=View.VISIBLE
+                        layoutError.container.visibility=View.GONE
+                    }
                 }
                 is Resource.Success -> {
                     val stocks = resource.data
@@ -88,6 +98,12 @@ class HomeFragment : Fragment() {
                             this.stockList[index]?.symbol=mainViewModel.getDecryptedText(stock?.symbol?:"")
                         }
                         filterStockBySymbol("")
+                    }
+                    binding?.apply {
+                        layoutLoading.container.visibility=View.GONE
+                        layoutError.container.visibility=View.GONE
+                        layoutSuccess.visibility=View.VISIBLE
+
                     }
                 }
             }

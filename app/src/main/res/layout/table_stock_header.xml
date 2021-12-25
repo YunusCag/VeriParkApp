@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Sembol"
+        android:text="@string/stock_table_column_symbol"
         android:textSize="12sp"
         android:textColor="@color/grey"
         android:textStyle="bold"
@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Fiyat"
+        android:text="@string/stock_table_column_price"
         android:textSize="12sp"
         android:textStyle="bold"
         android:layout_marginHorizontal="4dp"/>
@@ -32,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Fark"
+        android:text="@string/stock_table_column_difference"
         android:textSize="12sp"
         android:textStyle="bold"
         android:layout_marginHorizontal="4dp"/>
@@ -40,7 +40,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Hacim"
+        android:text="@string/stock_table_column_volume"
         android:textSize="12sp"
         android:textStyle="bold"
         android:layout_marginHorizontal="4dp"/>
@@ -48,7 +48,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Alış"
+        android:text="@string/stock_table_column_bid"
         android:textSize="12sp"
         android:textStyle="bold"
         android:layout_marginHorizontal="4dp"/>
@@ -56,7 +56,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Satış"
+        android:text="@string/stock_table_column_offer"
         android:textSize="12sp"
         android:textStyle="bold"
         android:layout_marginHorizontal="4dp"/>
@@ -64,7 +64,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Değişim"
+        android:text="@string/stock_table_column_changing"
         android:textSize="12sp"
         android:textStyle="bold"
         android:layout_marginHorizontal="4dp"/>
