@@ -26,28 +26,54 @@
     <LinearLayout
         android:id="@+id/layout_success"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible">
 
-        <include
-            android:id="@+id/layout_first"
-            layout="@layout/layout_detail_row" />
-        <include
-            android:id="@+id/layout_second"
-            layout="@layout/layout_detail_row" />
-        <include
-            android:id="@+id/layout_third"
-            layout="@layout/layout_detail_row" />
-        <include
-            android:id="@+id/layout_fourth"
-            layout="@layout/layout_detail_row" />
-        <include
-            android:id="@+id/layout_fifth"
-            layout="@layout/layout_detail_row" />
-        <include
-            android:id="@+id/layout_sixth"
-            layout="@layout/layout_detail_row" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/layout_first"
+                layout="@layout/layout_detail_row" />
+
+            <include
+                android:id="@+id/layout_second"
+                layout="@layout/layout_detail_row" />
+
+            <include
+                android:id="@+id/layout_third"
+                layout="@layout/layout_detail_row" />
+
+            <include
+                android:id="@+id/layout_fourth"
+                layout="@layout/layout_detail_row" />
+
+            <include
+                android:id="@+id/layout_fifth"
+                layout="@layout/layout_detail_row" />
+
+            <include
+                android:id="@+id/layout_sixth"
+                layout="@layout/layout_detail_row" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/daily_data_chart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"
+            android:background="@color/white"
+            android:elevation="10dp"
+            />
+
     </LinearLayout>
+
+
 </LinearLayout>
