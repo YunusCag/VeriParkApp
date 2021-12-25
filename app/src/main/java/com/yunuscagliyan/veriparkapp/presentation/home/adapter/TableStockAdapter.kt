@@ -8,25 +8,27 @@ import com.yunuscagliyan.veriparkapp.databinding.TableStockRowBinding
 import com.yunuscagliyan.veriparkapp.presentation.home.view_holder.TableStockViewHolder
 
 class TableStockAdapter(
-):RecyclerView.Adapter<TableStockViewHolder>() {
+    private val onRowClick: (stock: StockModel?) -> Unit,
+) : RecyclerView.Adapter<TableStockViewHolder>() {
 
-    private val stocks:ArrayList<StockModel?> = ArrayList<StockModel?>()
+    private val stocks: ArrayList<StockModel?> = ArrayList<StockModel?>()
 
-    fun submitList(stockList:List<StockModel?>){
+    fun submitList(stockList: List<StockModel?>) {
         this.stocks.clear()
         this.stocks.addAll(stockList)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TableStockViewHolder {
-        val binding=TableStockRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            TableStockRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TableStockViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TableStockViewHolder, position: Int) {
-        val stock=this.stocks[position]
+        val stock = this.stocks[position]
         stock?.let {
-            holder.bind(it, position)
+            holder.bind(it, position, onRowClick)
         }
     }
 

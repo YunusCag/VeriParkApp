@@ -1,7 +1,7 @@
 package com.yunuscagliyan.veriparkapp.domain.use_case
 
 import com.yunuscagliyan.veriparkapp.common.Resource
-import com.yunuscagliyan.veriparkapp.data.remote.model.request.start.HandShakeStartRequestBody
+import com.yunuscagliyan.veriparkapp.data.remote.model.request.start.HandShakeStartRequestModel
 import com.yunuscagliyan.veriparkapp.data.remote.model.response.start.HandShakeModel
 import com.yunuscagliyan.veriparkapp.domain.repository.VeriParkRepository
 import kotlinx.coroutines.flow.Flow
@@ -23,7 +23,7 @@ class StartHandShakeUseCase @Inject constructor(
         emit(Resource.Loading())
         try {
             val response = repository.startHandShake(
-                body = HandShakeStartRequestBody(
+                body = HandShakeStartRequestModel(
                     deviceId = deviceId,
                     systemVersion = systemVersion,
                     platformName = platformName,

@@ -32,7 +32,6 @@ fun String.toEncrypted(
         return tokenEncrypted.toString(Charsets.UTF_8)
 
     } catch (e: Exception) {
-        Timber.e("Encrypted:${e}")
     }
     return ""
 }
@@ -57,7 +56,6 @@ fun String.toDecrypted(
         return String(chipResult)
 
     } catch (e: Exception) {
-        Timber.e("Decrypted:${e}")
     }
     return ""
 }

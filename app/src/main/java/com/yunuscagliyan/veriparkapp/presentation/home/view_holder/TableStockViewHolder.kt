@@ -13,10 +13,13 @@ class TableStockViewHolder(
     ) : RecyclerView.ViewHolder(binding.root) {
 
 
-    fun bind(stock: StockModel, index: Int) {
+    fun bind(stock: StockModel, index: Int,onRowClick: (stock: StockModel?) -> Unit) {
         val decimalFormat = DecimalFormat("#.##")
         binding.apply {
 
+            containerRow.setOnClickListener {
+                onRowClick(stock)
+            }
             val rowColor= if (index % 2 == 1) {
                 ContextCompat.getColor(
                 itemView.context,

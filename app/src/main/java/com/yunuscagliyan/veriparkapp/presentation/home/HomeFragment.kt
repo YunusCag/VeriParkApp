@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.yunuscagliyan.veriparkapp.common.Resource
 import com.yunuscagliyan.veriparkapp.common.extension.onQueryTextChanged
 import com.yunuscagliyan.veriparkapp.common.extension.toEncrypted
@@ -26,6 +28,8 @@ class HomeFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
 
     private lateinit var stockAdapter: TableStockAdapter
+    private var navController:NavController?=null
+
 
     private var stockList=ArrayList<StockModel?>()
 
@@ -40,12 +44,20 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController=Navigation.findNavController(view)
+
         initUI()
         listenObserver()
     }
 
     private fun initUI() {
-        stockAdapter = TableStockAdapter()
+        stockAdapter = TableStockAdapter(){stock->
+            val action=HomeFragmentDirections.actionHomeDestinationToDetailDestination(
+                mainViewModel.getEncryptedText(stock?.id?.toString()?:"")
+            )
+            navController?.navigate(action)
+
+        }
 
         binding?.apply {
             (activity as? MainActivity)?.setUpToolbar(toolBar)
@@ -79,7 +91,6 @@ class HomeFragment : Fragment() {
                         layoutLoading.container.visibility=View.GONE
                         layoutError.container.visibility=View.VISIBLE
                         layoutError.tvError.text=resource.message?:""
-
                     }
                 }
                 is Resource.Loading -> {
@@ -103,7 +114,6 @@ class HomeFragment : Fragment() {
                         layoutLoading.container.visibility=View.GONE
                         layoutError.container.visibility=View.GONE
                         layoutSuccess.visibility=View.VISIBLE
-
                     }
                 }
             }

@@ -2,7 +2,7 @@ package com.yunuscagliyan.veriparkapp.data.remote.model.request.start
 
 import com.google.gson.annotations.SerializedName
 
-data class HandShakeStartRequestBody(
+data class HandShakeStartRequestModel(
     @SerializedName("deviceId")
     val deviceId:String?,
     @SerializedName("systemVersion")
