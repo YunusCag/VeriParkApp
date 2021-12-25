@@ -1,6 +1,7 @@
 package com.yunuscagliyan.veriparkapp.domain.use_case
 
 import com.yunuscagliyan.veriparkapp.common.Resource
+import com.yunuscagliyan.veriparkapp.data.remote.model.request.stock.StockRequestModel
 import com.yunuscagliyan.veriparkapp.data.remote.model.response.stock.StockModel
 import com.yunuscagliyan.veriparkapp.domain.repository.VeriParkRepository
 import kotlinx.coroutines.flow.Flow
@@ -13,16 +14,20 @@ class GetStockListUseCase @Inject constructor(
     private val repository: VeriParkRepository,
 ) {
 
-    operator fun invoke(period:String?): Flow<Resource<List<StockModel?>>> = flow {
+    operator fun invoke(period: String?): Flow<Resource<List<StockModel?>>> = flow {
         emit(Resource.Loading())
-        try{
-            val response=repository.getStockList(period)
-            if(response.status?.isSuccess==true){
-                val stockList=response.stocks
+        try {
+            val response = repository.getStockList(
+                StockRequestModel(
+                    period = period
+                ),
+            )
+            if (response.status?.isSuccess == true) {
+                val stockList = response.stocks
                 stockList?.let {
                     emit(Resource.Success(stockList))
                 }
-            }else{
+            } else {
                 emit(Resource.Error(response.status?.errorModel?.message))
             }
         } catch (e: HttpException) {

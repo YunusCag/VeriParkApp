@@ -14,7 +14,7 @@ class VeriParkRepositoryImp(
         return api.startHandShake(body)
     }
 
-    override suspend fun getStockList(period: String?): StockResponse {
-        return api.getStockList(StockRequestModel(period))
+    override suspend fun getStockList(body: StockRequestModel?): StockResponse {
+        return api.getStockList(body)
     }
 }
