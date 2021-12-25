@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:paddingVertical="8dp"
     android:background="@color/white"
+    android:foreground="?android:attr/selectableItemBackgroundBorderless"
     android:weightSum="7"
     android:gravity="center_vertical"
     android:id="@+id/containerRow">
