@@ -1,6 +1,6 @@
 # VeriParkApp
 <p>
-  Kullanılan Kütüphanler
+  Kullanılan Kütüphaneler
 </p>
 <p>
   <ul>
